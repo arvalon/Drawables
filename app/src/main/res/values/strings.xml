@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Drawables</string>
+
+    <string name="simple_text">Simple text drawable</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="long_string">"This is a really long string of text that will require multiple lines."</string>
+</resources>
