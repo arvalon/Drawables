@@ -32,7 +32,6 @@ public class BetterTextDrawable extends Drawable {
         mPaint.setColor(TEXT_COLOR);
         mPaint.setTextSize(100);
 
-
         /*mStaticLayout = new StaticLayout(
                 mText,
                 mPaint,
@@ -49,38 +48,45 @@ public class BetterTextDrawable extends Drawable {
     @Override
     public int getIntrinsicHeight() {
         Log.d(TAG, "BetterTextDrawable getIntrinsicHeight(): "+mStaticLayout.getHeight());
-        return mStaticLayout.getHeight()*3;
+        return mStaticLayout.getHeight();
     }
 
     @Override
     public int getIntrinsicWidth() {
+        Log.d(TAG, "BetterTextDrawable getIntrinsicWidth(): "+mStaticLayout.getWidth());
         return mStaticLayout.getWidth();
     }
 
     @Override
     public void draw(Canvas canvas) {
+        Log.d(TAG, "BetterTextDrawable draw");
         mStaticLayout.draw(canvas);
     }
 
     @Override
     public void setAlpha(int alpha) {
+        Log.d(TAG, "BetterTextDrawable setAlpha");
         mPaint.setAlpha(alpha);
         invalidateSelf();
     }
 
     @Override
     public void setColorFilter(ColorFilter cf) {
+        Log.d(TAG, "BetterTextDrawable setColorFilter");
         mPaint.setColorFilter(cf);
         invalidateSelf();
     }
 
     @Override
     public int getOpacity() {
+        Log.d(TAG, "BetterTextDrawable getOpacity");
         return PixelFormat.TRANSLUCENT;
     }
 
     @Override
     protected void onBoundsChange(Rect bounds) {
+
+        Log.d(TAG, "BetterTextDrawable onBoundsChange bounds: "+bounds.toShortString());
 
         /*mStaticLayout = new StaticLayout(
                 mText,
@@ -97,7 +103,7 @@ public class BetterTextDrawable extends Drawable {
     private void buildLayout(int width){
 
         mStaticLayout = StaticLayout.Builder
-                .obtain(mText,0,mText.length(),mPaint,width)
+                .obtain(mText,0, mText.length(),mPaint,width)
                 .build();
     }
 }

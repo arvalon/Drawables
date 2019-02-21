@@ -12,7 +12,6 @@ public class BetterTextActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_better_text);
 
-        // BetterTextDrawable
         View view = findViewById(R.id.view);
         view.setBackground(new BetterTextDrawable(getString(R.string.long_string)));
     }

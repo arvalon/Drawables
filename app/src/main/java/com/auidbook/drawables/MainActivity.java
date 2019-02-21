@@ -13,7 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 // TODO: 19.02.2019 перетащить остальные view, причесать id и др.
-// https://stackoverflow.com/questions/37349845/is-it-possible-to-put-a-constraintlayout-inside-a-scrollview
+// https://medium.com/over-engineering/drawing-multiline-text-to-canvas-on-android-9b98f0bfa16a
+
 /**
  * Drawables example
  * @author Ian G. Clifton

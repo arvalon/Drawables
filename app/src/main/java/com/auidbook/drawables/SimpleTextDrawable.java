@@ -30,7 +30,6 @@ public class SimpleTextDrawable extends Drawable {
 
     @Override
     public int getIntrinsicHeight() {
-        Log.d(TAG,"SimpleTextDrawable: etIntrinsicHeight(): "+(int) mPaint.getTextSize());
         return (int) mPaint.getTextSize();
     }
 
