@@ -26,7 +26,7 @@ public class BetterTextDrawable extends Drawable {
     private final String mText;
     private StaticLayout mStaticLayout;
 
-    public BetterTextDrawable(String text) {
+    BetterTextDrawable(String text) {
 
         mText = text;
         mPaint.setColor(TEXT_COLOR);
@@ -105,5 +105,8 @@ public class BetterTextDrawable extends Drawable {
         mStaticLayout = StaticLayout.Builder
                 .obtain(mText,0, mText.length(),mPaint,width)
                 .build();
+
+        Log.d(TAG, "BetterTextDrawable buildLayout mStaticLayout height =  "
+                +mStaticLayout.getHeight()+" line count: "+mStaticLayout.getLineCount());
     }
 }
