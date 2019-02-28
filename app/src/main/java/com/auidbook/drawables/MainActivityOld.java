@@ -32,9 +32,6 @@ public class MainActivityOld extends AppCompatActivity {
         // SimpleTextDrawable
         view.setBackground(new SimpleTextDrawable(getString(R.string.hello_world)));
 
-        // BetterTextDrawable
-        view.setBackground(new BetterTextDrawable(getString(R.string.long_string)));
-
         // SimpleImageDrawable
         final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         final SimpleImageDrawable simpleImageDrawable = new SimpleImageDrawable(bitmap);

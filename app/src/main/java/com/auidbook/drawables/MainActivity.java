@@ -30,24 +30,14 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        findViewById(R.id.better_text_btn).setOnClickListener(v ->
-            startActivity(new Intent(this,BetterTextActivity.class))
-        );
-
         // SimpleTextDrawable
         View view = findViewById(R.id.view);
         view.setBackground(new SimpleTextDrawable(getString(R.string.hello_world)));
 
-        // BetterTextDrawable
-
-        BetterTextDrawable multiLineText = new BetterTextDrawable(getString(R.string.long_string));
-
-        View view2 = findViewById(R.id.outer_view); // view2 before
-
-        view2.setBackground(multiLineText);
+        // BetterTextDrawable -> BetterTextView
 
         // SimpleImageDrawable
-        View view3 = findViewById(R.id.view3);
+        View view3 = findViewById(R.id.view2);
         final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
         final SimpleImageDrawable simpleImageDrawable = new SimpleImageDrawable(bitmap);
         view3.setBackground(simpleImageDrawable);
@@ -59,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         final ColorFilter lightingColorFilter = new LightingColorFilter(mul, add);
 
-        View view4 = findViewById(R.id.view4);
+        View view4 = findViewById(R.id.view3);
 
         SimpleImageDrawable simpleImageDrawable2 = new SimpleImageDrawable(bitmap);
 
