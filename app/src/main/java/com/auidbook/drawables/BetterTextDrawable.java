@@ -13,6 +13,8 @@ import android.util.Log;
 
 import static com.auidbook.drawables.MainActivity.TAG;
 
+// TODO: 28.02.2019 https://stackoverflow.com/questions/41779934/how-is-staticlayout-used-in-android
+
 /**
  * Drawable that handles multiple lines of text.
  *
@@ -58,6 +60,26 @@ public class BetterTextDrawable extends Drawable {
     }
 
     @Override
+    protected void onBoundsChange(Rect bounds) {
+
+        Log.d(TAG, "BetterTextDrawable onBoundsChange bounds: "+bounds.toShortString());
+
+        //mStaticLayout = new StaticLayout(mText, mPaint, bounds.width(), Layout.Alignment.ALIGN_NORMAL, 1, 0, false);
+
+        buildLayout(bounds.width());
+    }
+
+    private void buildLayout(int width){
+
+        mStaticLayout = StaticLayout.Builder
+                .obtain(mText,0, mText.length(),mPaint,width)
+                .build();
+
+        Log.d(TAG, "BetterTextDrawable buildLayout mStaticLayout height =  "
+                +mStaticLayout.getHeight()+" line count: "+mStaticLayout.getLineCount());
+    }
+
+    @Override
     public void draw(Canvas canvas) {
         Log.d(TAG, "BetterTextDrawable draw");
         mStaticLayout.draw(canvas);
@@ -81,32 +103,5 @@ public class BetterTextDrawable extends Drawable {
     public int getOpacity() {
         Log.d(TAG, "BetterTextDrawable getOpacity");
         return PixelFormat.TRANSLUCENT;
-    }
-
-    @Override
-    protected void onBoundsChange(Rect bounds) {
-
-        Log.d(TAG, "BetterTextDrawable onBoundsChange bounds: "+bounds.toShortString());
-
-        /*mStaticLayout = new StaticLayout(
-                mText,
-                mPaint,
-                bounds.width(),
-                Layout.Alignment.ALIGN_NORMAL,
-                1,
-                0,
-                false);*/
-
-        buildLayout(bounds.width());
-    }
-
-    private void buildLayout(int width){
-
-        mStaticLayout = StaticLayout.Builder
-                .obtain(mText,0, mText.length(),mPaint,width)
-                .build();
-
-        Log.d(TAG, "BetterTextDrawable buildLayout mStaticLayout height =  "
-                +mStaticLayout.getHeight()+" line count: "+mStaticLayout.getLineCount());
     }
 }

@@ -10,10 +10,8 @@ import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 // TODO: 19.02.2019 перетащить остальные view, причесать id и др.
-// https://stackoverflow.com/questions/41779934/how-is-staticlayout-used-in-android
 
 /**
  * Drawables example
@@ -41,13 +39,12 @@ public class MainActivity extends AppCompatActivity {
         view.setBackground(new SimpleTextDrawable(getString(R.string.hello_world)));
 
         // BetterTextDrawable
+
+        BetterTextDrawable multiLineText = new BetterTextDrawable(getString(R.string.long_string));
+
         View view2 = findViewById(R.id.outer_view); // view2 before
-        view2.setBackground(new BetterTextDrawable(getString(R.string.long_string)));
 
-        // todo посчитать это внутри BetterTextDrawable
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,368);
-
-        view2.setLayoutParams(lp);
+        view2.setBackground(multiLineText);
 
         // SimpleImageDrawable
         View view3 = findViewById(R.id.view3);
