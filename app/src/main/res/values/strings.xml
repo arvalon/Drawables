@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Drawables</string>
+
+    <string name="examples_button">See some examples</string>
+    <string name="try_button">Try to draw yourself</string>
+
     <string name="long_string">This is a really long string of text that will require multiple lines.</string>
 </resources>
