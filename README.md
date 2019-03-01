@@ -1,0 +1,2 @@
+From [Android User Interface Design: Implementing Material Design for Developers (Second Edition)](https://www.amazon.com/Android-User-Interface-Design-Implementing-ebook/dp/B018BI07P0)<br>
+![Preview1](./drawable_mainpage.png)

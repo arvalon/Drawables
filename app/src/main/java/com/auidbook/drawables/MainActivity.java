@@ -3,19 +3,21 @@ package com.auidbook.drawables;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.View;
-
-// TODO: 19.02.2019 перетащить остальные view, причесать id и др.
+import android.widget.ImageView;
 
 /**
  * Drawables example
+ *
+ * SimpleTextDrawable and BetterTextDrawable replaced by BetterTextView
+ *
  * @author Ian G. Clifton
+ * @author arvalon
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -25,36 +27,41 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_linear);
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // SimpleTextDrawable
-        View view = findViewById(R.id.view);
-        view.setBackground(new SimpleTextDrawable(getString(R.string.hello_world)));
-
-        // BetterTextDrawable -> BetterTextView
-
         // SimpleImageDrawable
-        View view3 = findViewById(R.id.view2);
-        final Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        final SimpleImageDrawable simpleImageDrawable = new SimpleImageDrawable(bitmap);
-        view3.setBackground(simpleImageDrawable);
 
-        // LightingColorFilter example
-        //                AARRGGBB
-        final int mul = 0xFF00FF00;
-        final int add = 0x000000BB;
+        View view = findViewById(R.id.view);
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.giwajip);
+        SimpleImageDrawable simpleImageDrawable = new SimpleImageDrawable(bitmap);
+        view.setBackground(simpleImageDrawable);
 
-        final ColorFilter lightingColorFilter = new LightingColorFilter(mul, add);
+        // LightingColorFilter
+        int mul = 0xFF00FF00;
+        int add = 0x000000BB;
 
-        View view4 = findViewById(R.id.view3);
-
+        ColorFilter lightingColorFilter = new LightingColorFilter(mul, add);
+        View view2 = findViewById(R.id.view2);
         SimpleImageDrawable simpleImageDrawable2 = new SimpleImageDrawable(bitmap);
-
-        view4.setBackground(simpleImageDrawable2);
-
+        view2.setBackground(simpleImageDrawable2);
         simpleImageDrawable2.setColorFilter(lightingColorFilter);
+
+        // RoundedImageDrawable
+
+        Bitmap largeBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.giwajip);
+
+        ImageView imageView = findViewById(R.id.image);
+        RoundedImageDrawable roundedImageDrawable = new RoundedImageDrawable(largeBitmap, 200);
+        imageView.setImageDrawable(roundedImageDrawable);
+
+        // FadedImageDrawable
+
+        ImageView imageView2 = findViewById(R.id.image2);
+        FadedImageDrawable fadedImageDrawable = new FadedImageDrawable(largeBitmap);
+        imageView2.setImageDrawable(fadedImageDrawable);
+
     }
 }
