@@ -1,39 +1,34 @@
-package com.auidbook.drawables;
+package com.auidbook.drawables.examples;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.graphics.RectF;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader;
+import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 
 /**
- * Custom Drawable that displays a Bitmap with rounded corners.
- *
- * You could modify this class to support changing the radius, custom scaling options, etc.
- *
- * @author Ian G. Clifton
+ * Created by ian on 7/16/15.
  */
-public class RoundedImageDrawable extends Drawable {
+public class FadedImageDrawable extends Drawable {
 
     private Bitmap mBitmap;
-    private int mRadius;
     private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final RectF mDestinationRectF = new RectF();
+    private final Xfermode mXfermode = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
 
-    public RoundedImageDrawable(Bitmap bitmap, int radius) {
-        mRadius = radius;
+    public FadedImageDrawable(Bitmap bitmap) {
         setBitmap(bitmap);
     }
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawRoundRect(mDestinationRectF, mRadius, mRadius, mPaint);
+        canvas.drawBitmap(mBitmap, null, getBounds(), mPaint);
     }
 
     @Override
@@ -66,11 +61,28 @@ public class RoundedImageDrawable extends Drawable {
      * @param bitmap Bitmap to draw with rounded corners
      */
     public void setBitmap(@NonNull Bitmap bitmap) {
-        mBitmap = bitmap;
 
-        final Shader shader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+        mBitmap = Bitmap
+                .createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
 
-        mPaint.setShader(shader);
+        final Canvas canvas = new Canvas(mBitmap);
+
+        final LinearGradient linearGradient =
+                new LinearGradient(0,
+                        0,
+                        0,
+                        bitmap.getHeight(),
+                        0xFF000000,
+                        0x00000000,
+                        Shader.TileMode.CLAMP);
+
+        mPaint.setShader(linearGradient);
+
+        canvas.drawRect(0, 0, mBitmap.getWidth(), mBitmap.getHeight(), mPaint);
+        mPaint.setShader(null);
+        mPaint.setXfermode(mXfermode);
+        canvas.drawBitmap(bitmap, 0, 0, mPaint);
+        mPaint.setXfermode(null);
         invalidateSelf();
     }
 
@@ -78,10 +90,5 @@ public class RoundedImageDrawable extends Drawable {
     public void setColorFilter(ColorFilter cf) {
         mPaint.setColorFilter(cf);
         invalidateSelf();
-    }
-
-    @Override
-    protected void onBoundsChange(Rect bounds) {
-        mDestinationRectF.set(bounds);
     }
 }

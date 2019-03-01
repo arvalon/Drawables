@@ -5,7 +5,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
+import com.auidbook.drawables.editor.EditorActivity;
+import com.auidbook.drawables.examples.ExamplesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,12 +20,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         findViewById(R.id.examples_button).setOnClickListener(v ->
-                startActivity(new Intent(this,ExamplesActivity.class))
+                startActivity(new Intent(this, ExamplesActivity.class))
         );
 
-        findViewById(R.id.try_button).setOnClickListener(v ->{
-            // TODO: 01.03.2019 Simple Drawable
-                }
+        findViewById(R.id.try_button).setOnClickListener(v ->
+            startActivity(new Intent(this, EditorActivity.class))
         );
     }
 }

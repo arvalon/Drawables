@@ -1,4 +1,4 @@
-package com.auidbook.drawables;
+package com.auidbook.drawables.examples;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

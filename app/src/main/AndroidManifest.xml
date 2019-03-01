@@ -18,7 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ExamplesActivity"/>
+        <activity android:name=".examples.ExamplesActivity"/>
+        <activity android:name=".editor.EditorActivity"/>
+
     </application>
 
 </manifest>

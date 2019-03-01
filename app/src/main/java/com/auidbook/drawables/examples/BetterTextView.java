@@ -1,4 +1,4 @@
-package com.auidbook.drawables;
+package com.auidbook.drawables.examples;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,6 +7,8 @@ import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.auidbook.drawables.R;
 
 import androidx.annotation.Nullable;
 

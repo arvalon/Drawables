@@ -1,4 +1,4 @@
-package com.auidbook.drawables;
+package com.auidbook.drawables.examples;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -10,6 +10,8 @@ import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.auidbook.drawables.R;
 
 /**
  * Drawables example
