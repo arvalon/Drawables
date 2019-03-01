@@ -21,8 +21,6 @@ import android.widget.ImageView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    static final String TAG = "drawables.logs";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
